@@ -40,3 +40,4 @@ fs.writeFileSync(path.join(publicDir, 'sitemap-0.xml'), sitemapXml, 'utf-8');
 fs.writeFileSync(path.join(publicDir, 'sitemap-index.xml'), sitemapIndexXml, 'utf-8');
 
 console.log(`✅ Sitemaps generated in ${publicDir} with ${canonicalRoutes.length} canonical URLs.`);
+

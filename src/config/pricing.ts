@@ -106,3 +106,4 @@ export const PRICING_PLANS: PricingPlan[] = [
     whatsappMessage: 'Olá! Quero garantir a oferta do plano de 12 Meses por R$ 240 (50% OFF)! Vim do assistatv.com.br'
   }
 ];
+

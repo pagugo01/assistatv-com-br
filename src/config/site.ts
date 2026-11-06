@@ -29,3 +29,4 @@ export function buildWhatsAppLink(message?: string): string {
   const msg = encodeURIComponent(message || SITE_CONFIG.whatsapp.defaultMessage);
   return `https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${msg}`;
 }
+
