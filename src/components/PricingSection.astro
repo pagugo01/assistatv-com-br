@@ -1,0 +1,96 @@
+---
+// PricingSection.astro - Tabela de preços neon com destaque idêntico ao cantinhodigital
+import { PRICING_PLANS } from '../config/pricing';
+import { SITE_CONFIG } from '../config/site';
+---
+
+<section id="planos" class="py-20 px-4 sm:px-6 bg-gradient-to-br from-purple-950 via-pink-950 to-slate-950 relative overflow-hidden">
+  <!-- Efeitos de luz ambiente de fundo -->
+  <div class="absolute inset-0 opacity-20 pointer-events-none">
+    <div class="absolute top-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-pink-500 rounded-full filter blur-3xl"></div>
+    <div class="absolute bottom-0 left-0 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-500 rounded-full filter blur-3xl"></div>
+  </div>
+
+  <div class="container mx-auto max-w-7xl relative z-10">
+    <div class="text-center mb-12 sm:mb-16">
+      <h2 class="text-4xl sm:text-6xl md:text-7xl font-black mb-4 tracking-tight">
+        <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+          ESCOLHA SEU PLANO
+        </span>
+      </h2>
+      <p class="text-xl sm:text-2xl text-yellow-300 font-bold animate-pulse">
+        🔥 Oferta válida apenas hoje! 🔥
+      </p>
+      <p class="text-lg sm:text-xl text-white mt-3 font-semibold">
+        👉 Planos com até <span class="text-pink-400 font-black">3 TELAS SIMULTÂNEAS</span> para toda a família
+      </p>
+    </div>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-8 items-stretch">
+      {PRICING_PLANS.map((plan) => {
+        const waLink = `https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${encodeURIComponent(plan.whatsappMessage)}`;
+
+        return (
+          <div
+            class={`relative bg-black/80 backdrop-blur-lg border-4 ${
+              plan.popular ? 'border-pink-500 lg:scale-105 z-20 my-2 lg:my-0 shadow-2xl ' + plan.shadow : 'border-white/20'
+            } rounded-3xl p-6 sm:p-8 hover:scale-[1.02] transition-all duration-300 flex flex-col justify-between`}
+          >
+            {plan.popular && (
+              <>
+                <div class="absolute -top-5 left-1/2 -translate-x-1/2 w-max bg-gradient-to-r from-pink-600 via-orange-500 to-yellow-500 px-6 py-2 rounded-full font-black text-xs sm:text-sm animate-pulse shadow-lg shadow-pink-500/50 z-20 uppercase tracking-wider border border-white/20 text-white">
+                  ⭐ Mais Vendido ⭐
+                </div>
+                <div class="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-yellow-500 to-cyan-500 rounded-[26px] blur-sm opacity-70 animate-pulse pointer-events-none"></div>
+              </>
+            )}
+
+            <div class="relative z-10 flex flex-col h-full">
+              <h3 class="text-2xl sm:text-3xl font-black text-white mb-4 text-center">
+                {plan.duration}
+              </h3>
+
+              <div class="text-center mb-6">
+                {plan.oldPrice && (
+                  <div class="text-xl sm:text-2xl text-gray-500 line-through mb-1">
+                    R$ {plan.oldPrice}
+                  </div>
+                )}
+                <div class={`text-5xl sm:text-6xl font-black bg-gradient-to-r ${plan.color} bg-clip-text text-transparent mb-2`}>
+                  R$ {plan.price}
+                </div>
+                {plan.discountPercentage && (
+                  <div class="inline-block bg-red-600 text-white px-3 py-1 rounded-full font-bold text-xs sm:text-sm animate-pulse">
+                    -{plan.discountPercentage}% OFF
+                  </div>
+                )}
+              </div>
+
+              <p class={`text-lg sm:text-xl font-bold text-center mb-6 ${plan.popular ? 'text-yellow-300' : 'text-gray-300'}`}>
+                {plan.desc}
+              </p>
+
+              <ul class="space-y-3 mb-8 flex-grow">
+                {plan.features.map((feat) => (
+                  <li class="flex items-start gap-2.5 text-white text-sm sm:text-base">
+                    <span class="text-green-400 text-lg flex-shrink-0">✓</span>
+                    <span class="font-semibold">{feat}</span>
+                  </li>
+                ))}
+              </ul>
+
+              <a
+                href={waLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                class={`block w-full text-center bg-gradient-to-r ${plan.color} px-6 py-4 rounded-2xl font-black text-lg sm:text-xl text-white hover:scale-[1.03] active:scale-[0.98] shadow-2xl ${plan.shadow} transition-all duration-300 cursor-pointer`}
+              >
+                {plan.ctaText}
+              </a>
+            </div>
+          </div>
+        );
+      })}
+    </div>
+  </div>
+</section>

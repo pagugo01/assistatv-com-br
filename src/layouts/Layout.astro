@@ -1,0 +1,120 @@
+---
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import SplashModal from '../components/SplashModal.astro';
+import WhatsAppFloating from '../components/WhatsAppFloating.astro';
+import MobileStickyDock from '../components/MobileStickyDock.astro';
+import { SITE_CONFIG } from '../config/site';
+
+interface Props {
+  title?: string;
+  description?: string;
+  canonical?: string;
+  image?: string;
+}
+
+const {
+  title = `${SITE_CONFIG.name} | ${SITE_CONFIG.tagline}`,
+  description = SITE_CONFIG.description,
+  canonical = Astro.url.href,
+  image = `${SITE_CONFIG.url}/og-image.jpg`
+} = Astro.props;
+
+const schemaGraph = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': `${SITE_CONFIG.url}/#website`,
+      'name': SITE_CONFIG.name,
+      'url': SITE_CONFIG.url,
+      'inLanguage': 'pt-BR'
+    },
+    {
+      '@type': 'Organization',
+      '@id': `${SITE_CONFIG.url}/#organization`,
+      'name': SITE_CONFIG.name,
+      'url': SITE_CONFIG.url,
+      'logo': `${SITE_CONFIG.url}/images/logo-512.png`,
+      'contactPoint': {
+        '@type': 'ContactPoint',
+        'telephone': `+${SITE_CONFIG.whatsapp.number}`,
+        'contactType': 'customer service',
+        'availableLanguage': 'Portuguese'
+      }
+    },
+    {
+      '@type': 'Product',
+      'name': 'IPTV Premium em Até 3 Telas',
+      'description': description,
+      'brand': {
+        '@type': 'Brand',
+        'name': SITE_CONFIG.name
+      },
+      'offers': {
+        '@type': 'AggregateOffer',
+        'priceCurrency': 'BRL',
+        'lowPrice': '30.00',
+        'highPrice': '240.00',
+        'offerCount': '4',
+        'availability': 'https://schema.org/InStock',
+        'url': `${SITE_CONFIG.url}/#planos`
+      }
+    }
+  ]
+};
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR" class="scroll-smooth overflow-x-hidden w-full max-w-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <meta name="generator" content={Astro.generator} />
+    <meta name="theme-color" content="#ec4899" />
+
+    <!-- SEO Meta Tags -->
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonical} />
+    <meta name="robots" content="index, follow" />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonical} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={image} />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:site_name" content={SITE_CONFIG.name} />
+    <meta property="og:locale" content="pt_BR" />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonical} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={image} />
+
+    <!-- Schema.org JSON-LD -->
+    <script type="application/ld+json" set:html={JSON.stringify(schemaGraph)} />
+  </head>
+  <body class="bg-black text-white antialiased font-sans selection:bg-pink-500 selection:text-white min-h-screen flex flex-col overflow-x-hidden w-full max-w-full pb-20 sm:pb-0">
+    <!-- Splash Modal Inicial de Boas-Vindas (Jewel Card) -->
+    <SplashModal />
+
+    <Header />
+    <main class="flex-grow w-full max-w-full overflow-x-hidden">
+      <slot />
+    </main>
+    <Footer />
+
+    <!-- WhatsApp Flutuante para Desktop -->
+    <WhatsAppFloating />
+
+    <!-- Barra Fixa Inferior Mobile First -->
+    <MobileStickyDock />
+  </body>
+</html>

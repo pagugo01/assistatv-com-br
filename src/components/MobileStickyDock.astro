@@ -1,0 +1,34 @@
+---
+// MobileStickyDock.astro - Dock inferior de alta conversão fixo para Mobile
+import { SITE_CONFIG } from '../config/site';
+
+const waLink = `https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${encodeURIComponent('Olá! Vim do assistatv.com.br pelo celular e quero testar agora!')}`;
+---
+
+<nav
+  class="sm:hidden fixed bottom-0 left-0 right-0 z-40 bg-black/95 backdrop-blur-xl border-t border-pink-500/40 px-3 py-2.5 shadow-[0_-5px_25px_rgba(236,72,153,0.3)]"
+  aria-label="Barra de Ação Rápida Mobile"
+>
+  <div class="flex items-center gap-2 max-w-md mx-auto">
+    <!-- Botão Planos -->
+    <a
+      href="#planos"
+      class="flex-1 py-3 px-3 bg-white/10 border border-pink-500/40 rounded-xl text-center text-xs font-black text-white hover:bg-white/20 active:scale-95 transition-all flex items-center justify-center gap-1.5"
+    >
+      <span>⚡</span>
+      <span>VER PLANOS</span>
+    </a>
+
+    <!-- Botão Principal WhatsApp -->
+    <a
+      href={waLink}
+      target="_blank"
+      rel="noopener noreferrer"
+      class="flex-[1.4] py-3 px-3 bg-gradient-to-r from-green-500 via-emerald-600 to-green-600 rounded-xl text-center text-xs font-black text-white shadow-lg shadow-green-500/40 active:scale-95 transition-all flex items-center justify-center gap-1.5 animate-pulse"
+      aria-label="Falar no WhatsApp"
+    >
+      <span class="text-sm">💬</span>
+      <span>WHATSAPP DIRETO</span>
+    </a>
+  </div>
+</nav>

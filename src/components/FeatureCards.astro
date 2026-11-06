@@ -1,0 +1,86 @@
+---
+// FeatureCards.astro - Cartões de diferenciais com visual neon idêntico ao cantinhodigital
+import { SITE_CONFIG } from '../config/site';
+---
+
+<section class="py-20 px-4 sm:px-6 bg-black">
+  <div class="container mx-auto max-w-6xl">
+    <h2 class="text-3xl sm:text-5xl md:text-6xl font-black text-center mb-12 sm:mb-16 tracking-tight">
+      <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+        Por que escolher a {SITE_CONFIG.name}?
+      </span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      <!-- Feature Card - Atendimento Humano -->
+      <div class="group relative bg-gradient-to-br from-green-900/30 to-emerald-900/30 backdrop-blur-sm border-2 border-green-500/50 rounded-3xl p-6 sm:p-8 hover:scale-[1.03] transition-all duration-300 overflow-hidden md:col-span-2 lg:col-span-1 shadow-lg shadow-green-500/10">
+        <div class="absolute -inset-1 bg-gradient-to-r from-green-500 to-emerald-500 rounded-3xl blur opacity-0 group-hover:opacity-40 transition duration-300 pointer-events-none"></div>
+        <div class="relative z-10">
+          <div class="text-5xl sm:text-6xl mb-4">🤝</div>
+          <h3 class="text-2xl sm:text-3xl font-black text-white mb-3">ATENDIMENTO HUMANO</h3>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+            Aqui você não fala com robô! Suporte 100% humanizado e rápido no WhatsApp para resolver tudo na hora.
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Card - Ultra Rápido -->
+      <div class="group relative bg-gradient-to-br from-pink-900/30 to-purple-900/30 backdrop-blur-sm border-2 border-pink-500/50 rounded-3xl p-6 sm:p-8 hover:scale-[1.03] transition-all duration-300 overflow-hidden shadow-lg shadow-pink-500/10">
+        <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 to-purple-500 rounded-3xl blur opacity-0 group-hover:opacity-40 transition duration-300 pointer-events-none"></div>
+        <div class="relative z-10">
+          <div class="text-5xl sm:text-6xl mb-4">⚡</div>
+          <h3 class="text-2xl sm:text-3xl font-black text-white mb-3">ULTRA RÁPIDO</h3>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+            Streaming em 4K sem travamentos. Tecnologia com servidores redundantes para você assistir sem interrupções!
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Card - Esportes ao Vivo com Imagem -->
+      <div class="group relative rounded-3xl overflow-hidden hover:scale-[1.03] transition-all duration-300 border-2 border-cyan-500/40 shadow-xl shadow-cyan-500/20">
+        <div class="absolute -inset-1 bg-gradient-to-r from-green-500 to-cyan-500 rounded-3xl blur opacity-40 group-hover:opacity-75 transition duration-300 pointer-events-none"></div>
+        <div class="relative h-80 w-full overflow-hidden">
+          <img
+            src="/images/sports.webp"
+            alt="Transmissão de futebol e esportes ao vivo em 4K"
+            width="600"
+            height="400"
+            class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+            loading="lazy"
+          />
+          <div class="absolute inset-0 bg-gradient-to-t from-black via-black/60 to-transparent p-6 sm:p-8 flex flex-col justify-end">
+            <div class="text-4xl sm:text-5xl mb-2">⚽</div>
+            <h3 class="text-2xl sm:text-3xl font-black text-white mb-1">ESPORTES AO VIVO</h3>
+            <p class="text-gray-200 text-base sm:text-lg font-semibold">
+              Futebol, Brasileirão, Libertadores, UFC, NBA e muito mais em HD/4K!
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Feature Card - Filmes & Séries -->
+      <div class="group relative bg-gradient-to-br from-cyan-900/30 to-blue-900/30 backdrop-blur-sm border-2 border-cyan-500/50 rounded-3xl p-6 sm:p-8 hover:scale-[1.03] transition-all duration-300 overflow-hidden shadow-lg shadow-cyan-500/10">
+        <div class="absolute -inset-1 bg-gradient-to-r from-cyan-500 to-blue-500 rounded-3xl blur opacity-0 group-hover:opacity-40 transition duration-300 pointer-events-none"></div>
+        <div class="relative z-10">
+          <div class="text-5xl sm:text-6xl mb-4">🎬</div>
+          <h3 class="text-2xl sm:text-3xl font-black text-white mb-3">FILMES & SÉRIES</h3>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+            Catálogo gigante atualizado diariamente com lançamentos dos cinemas e clássicos consagrados em um só lugar!
+          </p>
+        </div>
+      </div>
+
+      <!-- Feature Card - 3 Telas Simultâneas -->
+      <div class="group relative bg-gradient-to-br from-yellow-900/30 to-orange-900/30 backdrop-blur-sm border-2 border-yellow-500/50 rounded-3xl p-6 sm:p-8 hover:scale-[1.03] transition-all duration-300 overflow-hidden md:col-span-2 lg:col-span-2 shadow-lg shadow-yellow-500/10">
+        <div class="absolute -inset-1 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-3xl blur opacity-0 group-hover:opacity-40 transition duration-300 pointer-events-none"></div>
+        <div class="relative z-10">
+          <div class="text-5xl sm:text-6xl mb-4">📱</div>
+          <h3 class="text-2xl sm:text-3xl font-black text-white mb-3">3 TELAS SIMULTÂNEAS</h3>
+          <p class="text-gray-300 text-base sm:text-lg leading-relaxed">
+            Assista na Smart TV da sala, no celular no quarto e no tablet onde quiser. Sem desconexões e sem pagar nada a mais por isso!
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

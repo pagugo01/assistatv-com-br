@@ -1,0 +1,70 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE_CONFIG } from '../../config/site';
+
+const title = `Política de Privacidade | ${SITE_CONFIG.name}`;
+const description = `Política de privacidade e proteção de dados pessoais em conformidade com a LGPD no ${SITE_CONFIG.name}.`;
+---
+
+<Layout title={title} description={description} canonical={`${SITE_CONFIG.url}/politica-privacidade/`}>
+  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+    <div class="container mx-auto max-w-4xl">
+      <div class="mb-10 text-center">
+        <span class="inline-block bg-pink-500/20 border border-pink-500/40 text-pink-300 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4">
+          Transparência & LGPD
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          Política de Privacidade
+        </h1>
+        <p class="text-sm text-slate-400 mt-2">Última atualização: Novembro de 2026</p>
+      </div>
+
+      <div class="bg-black/70 backdrop-blur-md border border-pink-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8 text-slate-300 leading-relaxed">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">1. Compromisso com sua Privacidade</h2>
+          <p>
+            O <strong>{SITE_CONFIG.name}</strong> valoriza e respeita a sua privacidade. Esta política descreve como coletamos, usamos, armazenamos e protegemos os seus dados pessoais, em conformidade estrita com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018 - LGPD).
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">2. Dados Coletados</h2>
+          <p class="mb-2">Coletamos exclusivamente as informações estritamente necessárias para a prestação do atendimento e ativação do serviço:</p>
+          <ul class="list-disc pl-6 space-y-1 text-slate-400">
+            <li>Número de telefone para comunicação via WhatsApp;</li>
+            <li>Nome para identificação do cliente;</li>
+            <li>Registros técnicos anônimos de acesso ao site para medição de tráfego e métricas de desempenho.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">3. Finalidade do Tratamento</h2>
+          <p>
+            Os dados coletados têm por finalidade exclusiva fornecer suporte técnico, liberar credenciais de teste ou assinatura, processar confirmações de atendimento e garantir a estabilidade das conexões. Jamais vendemos, alugamos ou compartilhamos dados com terceiros para fins publicitários.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">4. Segurança dos Dados</h2>
+          <p>
+            Adotamos medidas técnicas e administrativas robustas, incluindo criptografia SSL/TLS em todas as comunicações, servidores protegidos e protocolos rígidos de confidencialidade da equipe humana de suporte.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">5. Seus Direitos (LGPD)</h2>
+          <p>
+            Você tem total direito de solicitar a qualquer momento a confirmação de existência de dados, acesso, correção, anonimização, bloqueio ou eliminação das suas informações de nossos canais de suporte. Basta entrar em contato com nossa equipe via WhatsApp oficial: <strong>+55 (51) 99716-477</strong>.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">6. Contato do Encarregado</h2>
+          <p>
+            Para esclarecer dúvidas sobre esta Política de Privacidade ou sobre o tratamento de seus dados, envie uma mensagem direta ao nosso suporte oficial através do canal de WhatsApp disponibilizado no site.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

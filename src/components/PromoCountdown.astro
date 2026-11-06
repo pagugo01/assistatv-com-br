@@ -1,0 +1,93 @@
+---
+// PromoCountdown.astro - Banner com contador regressivo de 6h idêntico ao cantinhodigital
+---
+
+<section class="pt-24 pb-8 px-4 sm:px-6 bg-gradient-to-r from-pink-600 via-purple-600 to-cyan-600 relative overflow-hidden">
+  <div class="absolute inset-0 bg-black/40 pointer-events-none"></div>
+
+  <div class="container mx-auto max-w-6xl relative z-10 text-center">
+    <div class="text-2xl sm:text-3xl md:text-5xl font-black text-white mb-3 sm:mb-6 animate-pulse tracking-tight">
+      🔥 OFERTA RELÂMPAGO - HOJE APENAS! 🔥
+    </div>
+
+    <p class="text-lg sm:text-xl md:text-2xl text-yellow-300 mb-6 sm:mb-8 font-bold">
+      Desconto de ATÉ 50% em planos anuais!
+    </p>
+
+    <!-- Contador com 3 caixas de vidro neon -->
+    <div class="flex justify-center items-center gap-2 sm:gap-4 mb-6 sm:mb-8">
+      <!-- Horas -->
+      <div class="bg-black/80 backdrop-blur-sm px-4 py-3 sm:px-6 sm:py-4 rounded-2xl border-2 border-pink-500 shadow-2xl shadow-pink-500/50 min-w-[80px] sm:min-w-[110px]">
+        <div id="countdown-hours" class="text-3xl sm:text-5xl md:text-6xl font-black text-pink-400 font-mono">06</div>
+        <div class="text-xs sm:text-sm text-gray-300 uppercase font-bold tracking-wider">Horas</div>
+      </div>
+
+      <!-- Minutos -->
+      <div class="bg-black/80 backdrop-blur-sm px-4 py-3 sm:px-6 sm:py-4 rounded-2xl border-2 border-purple-500 shadow-2xl shadow-purple-500/50 min-w-[80px] sm:min-w-[110px]">
+        <div id="countdown-minutes" class="text-3xl sm:text-5xl md:text-6xl font-black text-purple-400 font-mono">00</div>
+        <div class="text-xs sm:text-sm text-gray-300 uppercase font-bold tracking-wider">Minutos</div>
+      </div>
+
+      <!-- Segundos -->
+      <div class="bg-black/80 backdrop-blur-sm px-4 py-3 sm:px-6 sm:py-4 rounded-2xl border-2 border-cyan-500 shadow-2xl shadow-cyan-500/50 min-w-[80px] sm:min-w-[110px]">
+        <div id="countdown-seconds" class="text-3xl sm:text-5xl md:text-6xl font-black text-cyan-400 font-mono">00</div>
+        <div class="text-xs sm:text-sm text-gray-300 uppercase font-bold tracking-wider">Segundos</div>
+      </div>
+    </div>
+
+    <a
+      href="#planos"
+      class="inline-block w-full sm:w-auto bg-gradient-to-r from-yellow-400 via-pink-500 to-purple-600 px-8 py-4 md:px-12 md:py-5 rounded-full text-lg sm:text-xl md:text-2xl font-black text-white hover:scale-105 active:scale-95 transition-all duration-300 shadow-2xl shadow-pink-500/50 animate-bounce cursor-pointer"
+    >
+      QUERO APROVEITAR! 🚀
+    </a>
+  </div>
+</section>
+
+<script>
+  function setupCountdown() {
+    const hoursEl = document.getElementById('countdown-hours');
+    const minutesEl = document.getElementById('countdown-minutes');
+    const secondsEl = document.getElementById('countdown-seconds');
+
+    if (!hoursEl || !minutesEl || !secondsEl) return;
+
+    const storageKey = 'assistatv_promo_timer_end';
+    const now = Date.now();
+    let endTime = parseInt(localStorage.getItem(storageKey) || '0', 10);
+
+    if (!endTime || endTime <= now) {
+      // 6 horas de oferta a partir de agora
+      endTime = now + 6 * 60 * 60 * 1000;
+      localStorage.setItem(storageKey, endTime.toString());
+    }
+
+    function update() {
+      const current = Date.now();
+      let diff = endTime - current;
+
+      if (diff <= 0) {
+        endTime = current + 6 * 60 * 60 * 1000;
+        localStorage.setItem(storageKey, endTime.toString());
+        diff = endTime - current;
+      }
+
+      const h = Math.floor(diff / (1000 * 60 * 60));
+      const m = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+      const s = Math.floor((diff % (1000 * 60)) / 1000);
+
+      hoursEl.textContent = String(h).padStart(2, '0');
+      minutesEl.textContent = String(m).padStart(2, '0');
+      secondsEl.textContent = String(s).padStart(2, '0');
+    }
+
+    update();
+    setInterval(update, 1000);
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupCountdown);
+  } else {
+    setupCountdown();
+  }
+</script>

@@ -1,0 +1,60 @@
+---
+// Footer.astro - Rodapé idêntico ao cantinhodigital
+import { SITE_CONFIG } from '../config/site';
+---
+
+<footer class="py-12 px-4 sm:px-6 bg-gradient-to-br from-slate-950 to-purple-950 border-t-4 border-pink-500">
+  <div class="container mx-auto max-w-6xl">
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+      <div>
+        <div class="flex items-center gap-3 mb-4">
+          <img
+            src="/favicon.svg"
+            alt={SITE_CONFIG.name}
+            width="40"
+            height="40"
+            class="rounded-xl border border-pink-500/40 shadow-lg shadow-purple-500/30"
+            loading="lazy"
+          />
+          <span class="text-2xl font-black bg-gradient-to-r from-cyan-400 to-pink-400 bg-clip-text text-transparent">
+            {SITE_CONFIG.name}
+          </span>
+        </div>
+        <p class="text-gray-300 text-base sm:text-lg mb-4">
+          IPTV Premium com qualidade 4K, suporte humano e máxima estabilidade para até 3 telas.
+        </p>
+        <p class="text-xs text-slate-400">
+          Atendimento Oficial: +55 (51) 99716-477
+        </p>
+      </div>
+
+      <div>
+        <h3 class="text-white font-black mb-4 text-xl">Links Rápidos</h3>
+        <ul class="space-y-2 text-gray-300 text-base sm:text-lg">
+          <li><a href="#planos" class="hover:text-pink-400 transition-colors">⚡ Planos</a></li>
+          <li><a href="#como-funciona" class="hover:text-pink-400 transition-colors">📋 Como Funciona</a></li>
+          <li><a href="#faq" class="hover:text-pink-400 transition-colors">❓ FAQ</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <h3 class="text-white font-black mb-4 text-xl">Legal & Segurança</h3>
+        <ul class="space-y-2 text-gray-300 text-base sm:text-lg">
+          <li><a href="/politica-privacidade/" class="hover:text-pink-400 transition-colors">🔒 Política de Privacidade</a></li>
+          <li><a href="/termos-uso/" class="hover:text-pink-400 transition-colors">📄 Termos de Uso</a></li>
+        </ul>
+        <div class="mt-4 flex items-center gap-2 text-xs text-slate-400">
+          <span class="text-green-400">●</span>
+          <span>SSL 256-Bit Ativo & Seguro</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="text-center text-gray-400 pt-8 border-t border-pink-500/30 text-sm sm:text-base">
+      <p>© 2026 {SITE_CONFIG.name}. Todos os direitos reservados. 🚀</p>
+      <p class="text-xs text-slate-500 mt-2">
+        A reprodução total ou parcial deste conteúdo é estritamente proibida.
+      </p>
+    </div>
+  </div>
+</footer>

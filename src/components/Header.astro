@@ -1,0 +1,72 @@
+---
+// Header.astro - Navbar idêntica ao cantinhodigital
+import { SITE_CONFIG } from '../config/site';
+
+const waLink = `https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${encodeURIComponent(SITE_CONFIG.whatsapp.defaultMessage)}`;
+---
+
+<header class="fixed top-0 w-full z-50 bg-black/90 backdrop-blur-xl border-b border-pink-500/30 shadow-lg shadow-pink-500/20">
+  <nav class="container mx-auto px-4 sm:px-6 py-3 sm:py-4 flex items-center justify-between">
+    <!-- Logo & Nome -->
+    <a href="/" class="flex items-center gap-3 group">
+      <div class="relative w-10 h-10 sm:w-11 sm:h-11 rounded-xl overflow-hidden shadow-lg shadow-purple-500/50 border border-pink-500/40 bg-slate-900 flex items-center justify-center">
+        <img
+          src="/favicon.svg"
+          alt={SITE_CONFIG.name}
+          width="44"
+          height="44"
+          class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300"
+          loading="eager"
+        />
+      </div>
+      <div class="flex flex-col">
+        <span class="text-xl sm:text-2xl font-black bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent tracking-tight">
+          ASSISTA TV
+        </span>
+        <span class="text-[9px] uppercase tracking-widest text-slate-400 font-bold hidden sm:block">
+          IPTV Premium 3 Telas
+        </span>
+      </div>
+    </a>
+
+    <!-- Menu Desktop -->
+    <div class="hidden md:flex items-center gap-8">
+      <a href="#planos" class="text-gray-200 hover:text-pink-400 transition-colors font-semibold">Planos</a>
+      <a href="#como-funciona" class="text-gray-200 hover:text-pink-400 transition-colors font-semibold">Como Funciona</a>
+      <a href="#faq" class="text-gray-200 hover:text-pink-400 transition-colors font-semibold">FAQ</a>
+      <a
+        href={waLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="relative group"
+        aria-label="Atendimento via WhatsApp"
+      >
+        <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300 animate-pulse"></div>
+        <div class="relative bg-black px-7 py-2.5 rounded-full font-bold text-white flex items-center gap-2">
+          <span>💬</span>
+          <span>WhatsApp</span>
+        </div>
+      </a>
+    </div>
+
+    <!-- CTA Rápido Mobile -->
+    <div class="flex md:hidden items-center gap-2">
+      <a
+        href="#planos"
+        class="text-xs font-bold text-slate-300 px-3 py-1.5 rounded-lg border border-slate-700 hover:border-pink-500/50"
+      >
+        Planos
+      </a>
+      <a
+        href={waLink}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="text-xs font-bold text-white bg-gradient-to-r from-pink-600 to-purple-600 px-3 py-1.5 rounded-lg shadow-md shadow-pink-500/30 flex items-center gap-1"
+        aria-label="Falar no WhatsApp"
+      >
+        <span>💬</span>
+        <span>WhatsApp</span>
+      </a>
+    </div>
+  </nav>
+</header>

@@ -1,0 +1,19 @@
+---
+// WhatsAppFloating.astro - Botão flutuante para Desktop idêntico ao cantinhodigital
+import { SITE_CONFIG } from '../config/site';
+
+const waLink = `https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${encodeURIComponent('Olá! Vim do assistatv.com.br e quero saber mais.')}`;
+---
+
+<aside class="hidden sm:block fixed bottom-8 right-8 z-40 group" aria-label="Atendimento via WhatsApp">
+  <div class="absolute -inset-3 bg-gradient-to-r from-green-400 to-green-600 rounded-full blur-xl opacity-75 group-hover:opacity-100 animate-pulse pointer-events-none"></div>
+  <a
+    href={waLink}
+    target="_blank"
+    rel="noopener noreferrer"
+    class="relative bg-gradient-to-br from-green-500 to-green-600 w-16 h-16 md:w-20 md:h-20 rounded-full flex items-center justify-center text-3xl md:text-5xl shadow-2xl hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer"
+    aria-label="Falar no WhatsApp com suporte humano"
+  >
+    <span>💬</span>
+  </a>
+</aside>

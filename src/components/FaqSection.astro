@@ -1,0 +1,62 @@
+---
+// FaqSection.astro - Perguntas Frequentes idêntico ao cantinhodigital
+const faqs = [
+  {
+    q: "Funciona em qual dispositivo?",
+    a: "Funciona em Smart TV (Samsung Tizen, LG webOS, Android TV), Celular (Android e iOS), TV Box, Fire TV Stick, Chromecast, Computador, Notebook e Tablets!"
+  },
+  {
+    q: "Quantas telas posso usar ao mesmo tempo?",
+    a: "Nossos planos oferecem até 3 telas simultâneas! Você pode assistir na TV da sala, no celular no quarto e no tablet sem desconexões ou quedas."
+  },
+  {
+    q: "Tem teste grátis?",
+    a: "SIM! Você pode solicitar um teste gratuito pelo WhatsApp agora mesmo para testar a qualidade dos canais, a velocidade e a estabilidade antes de assinar."
+  },
+  {
+    q: "Como é o suporte?",
+    a: "Nosso suporte é 100% humano via WhatsApp! Sem robôs travando sua conversa. Ajudamos na instalação passo a passo e tiramos qualquer dúvida na hora."
+  },
+  {
+    q: "Qual a qualidade da transmissão?",
+    a: "Oferecemos transmissões em HD, Full HD e 4K real a 60 FPS nos principais canais e eventos esportivos, garantindo máxima fluidez."
+  },
+  {
+    q: "Tem futebol ao vivo?",
+    a: "SIM! Grade completa com Brasileirão Séries A e B, Copa do Brasil, Libertadores, Champions League, Premier League, canais pay-per-view e lutas ao vivo."
+  },
+  {
+    q: "Existe fidelidade ou contrato de permanência?",
+    a: "Não! Sem nenhuma fidelidade, sem burocracia e sem multas. Você escolhe o período (1, 3, 6 ou 12 meses) e renova apenas se gostar do serviço."
+  }
+];
+---
+
+<section id="faq" class="py-20 px-4 sm:px-6 bg-black">
+  <div class="container mx-auto max-w-4xl">
+    <h2 class="text-3xl sm:text-5xl md:text-6xl font-black text-center mb-12 sm:mb-16 tracking-tight">
+      <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+        Perguntas Frequentes
+      </span>
+    </h2>
+
+    <div class="space-y-4 sm:space-y-6">
+      {faqs.map((faq) => (
+        <details class="group bg-gradient-to-br from-purple-900/30 to-pink-900/30 backdrop-blur-sm border-2 border-pink-500/30 rounded-3xl p-6 sm:p-8 hover:border-pink-500 transition-all duration-300 shadow-xl shadow-pink-500/10">
+          <summary class="text-lg sm:text-2xl font-black text-white cursor-pointer list-none flex items-center justify-between gap-4">
+            <span class="flex items-center gap-3 sm:gap-4">
+              <span class="text-pink-400 text-xl sm:text-2xl flex-shrink-0">❓</span>
+              <span>{faq.q}</span>
+            </span>
+            <span class="text-pink-400 group-open:rotate-180 transition-transform duration-300 text-2xl sm:text-3xl flex-shrink-0">
+              ▼
+            </span>
+          </summary>
+          <p class="text-gray-300 mt-4 sm:mt-6 leading-relaxed text-base sm:text-xl pl-8 sm:pl-12">
+            {faq.a}
+          </p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>

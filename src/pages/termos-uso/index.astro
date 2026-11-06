@@ -1,0 +1,67 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import { SITE_CONFIG } from '../../config/site';
+
+const title = `Termos de Uso | ${SITE_CONFIG.name}`;
+const description = `Termos e condições de uso dos serviços e atendimentos do ${SITE_CONFIG.name}.`;
+---
+
+<Layout title={title} description={description} canonical={`${SITE_CONFIG.url}/termos-uso/`}>
+  <section class="py-16 sm:py-24 px-4 sm:px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-slate-950">
+    <div class="container mx-auto max-w-4xl">
+      <div class="mb-10 text-center">
+        <span class="inline-block bg-cyan-500/20 border border-cyan-500/40 text-cyan-300 px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-widest mb-4">
+          Condições & Transparência
+        </span>
+        <h1 class="text-3xl sm:text-5xl font-black text-white tracking-tight">
+          Termos de Uso
+        </h1>
+        <p class="text-sm text-slate-400 mt-2">Última atualização: Novembro de 2026</p>
+      </div>
+
+      <div class="bg-black/70 backdrop-blur-md border border-cyan-500/30 rounded-3xl p-6 sm:p-10 shadow-2xl space-y-8 text-slate-300 leading-relaxed">
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">1. Aceitação dos Termos</h2>
+          <p>
+            Ao acessar o site <strong>{SITE_CONFIG.name}</strong> ({SITE_CONFIG.domain}) e contratar qualquer plano ou teste, você concorda expressamente em cumprir estes Termos de Uso e todas as diretrizes aqui estabelecidas.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">2. Prestação dos Serviços</h2>
+          <p>
+            O {SITE_CONFIG.name} fornece soluções de conectividade e streaming com suporte técnico especializado. Os acessos concedidos respeitam o limite de telas simultâneas do plano contratado (até 3 telas simultâneas). O compartilhamento não autorizado além dos limites contratados enseja suspensão preventiva do acesso.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">3. Requisitos Técnicos</h2>
+          <p>
+            Para usufruir de reprodução em Full HD e 4K Ultra HD sem travamentos, o usuário deve dispor de conexão de internet banda larga estável (recomendável no mínimo 30 Mbps para streaming 4K). Não nos responsabilizamos por instabilidades causadas pela operadora local do cliente.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">4. Sem Fidelidade</h2>
+          <p>
+            Não exigimos fidelidade nem contrato de permanência mínima. Cada período contratado (mensal, trimestral, semestral ou anual) é pré-pago e sua renovação é opcional a critério do cliente.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">5. Suporte Técnico Humano</h2>
+          <p>
+            O suporte técnico é prestado diariamente via WhatsApp oficial através do número <strong>+55 (51) 99716-477</strong>, auxiliando na configuração de reprodutores compatíveis para Smart TVs, TV Boxes, celulares e computadores.
+          </p>
+        </div>
+
+        <div>
+          <h2 class="text-xl sm:text-2xl font-black text-white mb-3">6. Alterações dos Termos</h2>
+          <p>
+            Reservamo-nos o direito de atualizar estes termos periodicamente para refletir melhorias no serviço ou exigências legais. As alterações entram em vigor no momento de sua publicação nesta página.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+</Layout>

@@ -1,0 +1,66 @@
+---
+// TestimonialsSection.astro - Depoimentos com visual idêntico ao cantinhodigital
+const testimonials = [
+  {
+    name: "Carlos M.",
+    role: "Cliente há 8 meses",
+    text: "Muito estável, não trava e funciona perfeitamente na minha Smart TV. O suporte me ajudou a configurar em 2 minutos. Melhor IPTV que já usei!",
+    stars: 5,
+    avatar: "/images/avatar-carlos.webp"
+  },
+  {
+    name: "Renata S.",
+    role: "Cliente há 5 meses",
+    text: "Atendimento rápido no WhatsApp e qualidade excelente em 4K. Meus filhos assistem desenhos e eu não perco nenhum episódio das minhas séries. Super recomendo!",
+    stars: 5,
+    avatar: "/images/avatar-renata.webp"
+  },
+  {
+    name: "João P.",
+    role: "Cliente há 1 ano",
+    text: "Uso em 3 telas ao mesmo tempo sem problema nenhum. Minha esposa assiste novela, meu filho desenhos no tablet e eu futebol na sala em 60 FPS!",
+    stars: 5,
+    avatar: "/images/avatar-joao.webp"
+  }
+];
+---
+
+<section class="py-20 px-4 sm:px-6 bg-black">
+  <div class="container mx-auto max-w-6xl">
+    <h2 class="text-3xl sm:text-5xl md:text-6xl font-black text-center mb-12 sm:mb-16 tracking-tight">
+      <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent">
+        O que dizem nossos clientes
+      </span>
+    </h2>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
+      {testimonials.map((item) => (
+        <div class="bg-gradient-to-br from-purple-900/50 to-pink-900/50 backdrop-blur-sm border-2 border-pink-500/30 rounded-3xl p-6 sm:p-8 hover:scale-[1.03] hover:border-pink-500 transition-all duration-300 shadow-xl shadow-pink-500/20 flex flex-col items-center text-center">
+          <div class="relative w-20 h-20 sm:w-24 sm:h-24 mb-4 rounded-full overflow-hidden border-4 border-pink-500 shadow-lg shadow-pink-500/50 bg-slate-800">
+            <img
+              src={item.avatar}
+              alt={item.name}
+              width="96"
+              height="96"
+              class="w-full h-full object-cover"
+              loading="lazy"
+            />
+          </div>
+
+          <div class="text-yellow-400 text-2xl sm:text-3xl mb-4 tracking-widest">
+            {"⭐".repeat(item.stars)}
+          </div>
+
+          <p class="text-gray-200 mb-6 italic text-base sm:text-lg leading-relaxed flex-grow">
+            "{item.text}"
+          </p>
+
+          <div>
+            <p class="text-pink-400 font-black text-lg sm:text-xl">— {item.name}</p>
+            <p class="text-slate-400 text-xs mt-0.5">{item.role}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>

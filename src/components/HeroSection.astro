@@ -1,0 +1,84 @@
+---
+// HeroSection.astro - Hero com imagem e gradientes neon idêntico ao cantinhodigital
+import { SITE_CONFIG } from '../config/site';
+
+const waFreeTrialLink = `https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${encodeURIComponent('Quero fazer um teste grátis! Vim do assistatv.com.br')}`;
+---
+
+<section class="py-14 sm:py-20 px-4 sm:px-6 bg-gradient-to-br from-slate-950 via-purple-950 to-pink-950 relative overflow-hidden">
+  <!-- Fundo com orbs pulsantes em neon -->
+  <div class="absolute inset-0 opacity-30 pointer-events-none">
+    <div class="absolute top-0 left-0 w-72 sm:w-96 h-72 sm:h-96 bg-pink-500 rounded-full filter blur-3xl animate-pulse"></div>
+    <div class="absolute bottom-0 right-0 w-72 sm:w-96 h-72 sm:h-96 bg-cyan-500 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 1s;"></div>
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-72 sm:w-96 h-72 sm:h-96 bg-purple-500 rounded-full filter blur-3xl animate-pulse" style="animation-delay: 2s;"></div>
+  </div>
+
+  <div class="container mx-auto max-w-7xl relative z-10">
+    <div class="grid grid-cols-1 lg:grid-cols-2 gap-10 lg:gap-12 items-center">
+      <!-- Coluna Esquerda: Textos & CTAs -->
+      <div class="space-y-6 sm:space-y-8 text-center lg:text-left">
+        <div class="inline-block">
+          <span class="bg-gradient-to-r from-cyan-400 via-pink-400 to-yellow-400 text-black px-5 sm:px-6 py-2.5 sm:py-3 rounded-full text-base sm:text-lg font-black animate-pulse shadow-lg shadow-pink-500/50 inline-flex items-center gap-2">
+            <span>✨</span>
+            <span>TESTE GRÁTIS DISPONÍVEL</span>
+            <span>✨</span>
+          </span>
+        </div>
+
+        <h1 class="text-4xl sm:text-6xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight">
+          <span class="bg-gradient-to-r from-cyan-400 via-pink-500 to-yellow-400 bg-clip-text text-transparent drop-shadow-2xl">
+            IPTV
+          </span>
+          <br />
+          <span class="text-white drop-shadow-2xl">
+            PREMIUM
+          </span>
+          <br />
+          <span class="bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 bg-clip-text text-transparent text-5xl sm:text-7xl md:text-8xl filter drop-shadow-[0_0_15px_rgba(236,72,153,0.5)]">
+            3 TELAS
+          </span>
+        </h1>
+
+        <p class="text-xl sm:text-2xl md:text-3xl text-gray-200 font-bold leading-relaxed max-w-2xl mx-auto lg:mx-0">
+          Assista <span class="text-pink-400">canais</span>, <span class="text-cyan-400">filmes</span>, <span class="text-yellow-400">séries</span> e <span class="text-green-400">esportes</span> em <strong class="text-white">qualidade 4K</strong>!
+        </p>
+
+        <!-- Botões de Ação -->
+        <div class="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start w-full">
+          <a
+            href="#planos"
+            class="relative group w-full sm:w-auto text-center"
+          >
+            <div class="absolute -inset-1 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-full blur opacity-75 group-hover:opacity-100 transition duration-300"></div>
+            <div class="relative bg-gradient-to-r from-pink-600 to-purple-600 px-8 py-4 md:px-12 md:py-5 rounded-full text-xl md:text-2xl font-black text-white shadow-2xl hover:scale-[1.02] active:scale-[0.98] transition-all">
+              VER PLANOS 🔥
+            </div>
+          </a>
+
+          <a
+            href={waFreeTrialLink}
+            target="_blank"
+            rel="noopener noreferrer"
+            class="w-full sm:w-auto text-center bg-white/10 backdrop-blur-sm border-2 border-white/30 px-8 py-4 md:px-10 md:py-5 rounded-full text-lg md:text-xl font-bold text-white hover:bg-white/20 transition-all duration-300 flex items-center justify-center gap-2"
+          >
+            <span>Teste Grátis 🎁</span>
+          </a>
+        </div>
+      </div>
+
+      <!-- Coluna Direita: Imagem de Hero com borda neon vibrante -->
+      <div class="relative max-w-lg lg:max-w-none mx-auto w-full">
+        <div class="absolute -inset-4 bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 rounded-3xl blur-2xl opacity-50 animate-pulse pointer-events-none"></div>
+        <img
+          src="/images/hero-devices.webp"
+          alt="Assinatura IPTV Premium Assista TV em Smart TV, Celular e Computador"
+          width="800"
+          height="600"
+          class="relative rounded-3xl shadow-2xl shadow-pink-500/50 w-full h-auto object-cover border border-white/10"
+          loading="eager"
+          decoding="async"
+        />
+      </div>
+    </div>
+  </div>
+</section>

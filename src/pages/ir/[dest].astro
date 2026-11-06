@@ -1,0 +1,54 @@
+---
+import { SITE_CONFIG } from '../../config/site';
+import { PRICING_PLANS } from '../../config/pricing';
+
+export function getStaticPaths() {
+  const paths = [
+    {
+      params: { dest: 'whatsapp' },
+      props: {
+        targetUrl: `https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${encodeURIComponent(SITE_CONFIG.whatsapp.defaultMessage)}`,
+        title: 'Redirecionando para WhatsApp...'
+      }
+    },
+    {
+      params: { dest: 'teste-gratis' },
+      props: {
+        targetUrl: `https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${encodeURIComponent('Quero fazer um teste grátis! Vim do assistatv.com.br')}`,
+        title: 'Redirecionando para Teste Grátis...'
+      }
+    },
+    ...PRICING_PLANS.map((plan) => ({
+      params: { dest: plan.ctaRoute.replace(/^\/ir\/|\/$/g, '') },
+      props: {
+        targetUrl: `https://wa.me/${SITE_CONFIG.whatsapp.number}?text=${encodeURIComponent(plan.whatsappMessage)}`,
+        title: `Redirecionando para Plano ${plan.duration}...`
+      }
+    }))
+  ];
+
+  return paths;
+}
+
+const { targetUrl, title } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="robots" content="noindex, nofollow" />
+    <meta http-equiv="refresh" content={`0;url=${targetUrl}`} />
+    <title>{title}</title>
+    <link rel="canonical" href={targetUrl} />
+    <script define:vars={{ targetUrl }}>
+      window.location.replace(targetUrl);
+    </script>
+  </head>
+  <body style="background-color: #000; color: #fff; font-family: sans-serif; display: flex; align-items: center; justify-content: center; min-height: 100vh; margin: 0; text-align: center; padding: 20px;">
+    <div>
+      <p style="font-size: 1.25rem; font-weight: bold; margin-bottom: 1rem;">Conectando ao WhatsApp do {SITE_CONFIG.name}...</p>
+      <p style="font-size: 0.875rem; color: #ec4899;">Se você não for redirecionado em instantes, <a href={targetUrl} style="color: #38bdf8; text-decoration: underline;">clique aqui</a>.</p>
+    </div>
+  </body>
+</html>

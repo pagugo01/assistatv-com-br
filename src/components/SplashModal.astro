@@ -1,0 +1,92 @@
+---
+// SplashModal.astro - Jewel Card de Entrada idêntico ao cantinhodigital
+---
+
+<div
+  id="splash-modal-overlay"
+  class="fixed inset-0 z-[100] flex items-center justify-center bg-slate-950/70 backdrop-blur-md transition-opacity duration-500 p-4"
+  role="dialog"
+  aria-modal="true"
+  aria-label="Bem-vindo ao Assista TV"
+>
+  <div
+    id="splash-modal-card"
+    class="relative max-w-[360px] md:max-w-[440px] w-[92%] transition-all duration-500"
+  >
+    <!-- Glossy Border Effect -->
+    <div class="absolute -inset-[2px] bg-gradient-to-r from-pink-500 via-purple-600 to-cyan-400 rounded-[2.2rem] md:rounded-[2.7rem] opacity-70 blur-[1px]"></div>
+
+    <div class="relative bg-slate-900 rounded-[2rem] md:rounded-[2.5rem] p-8 md:p-12 shadow-[0_0_50px_-10px_rgba(236,72,153,0.4)] text-center overflow-hidden">
+      <!-- Internal Accent Glow -->
+      <div class="absolute -top-20 -right-20 w-40 h-40 bg-pink-500/20 rounded-full blur-[60px] pointer-events-none"></div>
+
+      <!-- Icon Section -->
+      <div class="relative w-16 h-16 md:w-20 md:h-20 bg-white/5 rounded-3xl flex items-center justify-center text-4xl md:text-5xl mb-6 md:mb-8 mx-auto border border-white/10 shadow-inner">
+        <span class="drop-shadow-[0_0_10px_rgba(255,255,255,0.5)]">🤝</span>
+      </div>
+
+      <h2 class="text-3xl md:text-5xl font-black text-white mb-4 tracking-tighter leading-[0.95] uppercase italic">
+        Atendimento <br />
+        <span class="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 to-purple-500 drop-shadow-[0_2px_10px_rgba(236,72,153,0.4)]">Humano</span>
+      </h2>
+
+      <p class="text-base md:text-lg text-slate-300 leading-tight font-bold mb-8 md:mb-10 px-2 tracking-tight">
+        Aqui você é prioridade. <br />
+        <span class="text-cyan-400">Suporte real feito por pessoas.</span>
+      </p>
+
+      <button
+        type="button"
+        id="splash-enter-btn"
+        class="group relative w-full max-w-[260px] mx-auto py-3.5 px-6 bg-gradient-to-r from-pink-600 to-purple-700 text-white font-black text-sm md:text-base rounded-xl md:rounded-2xl hover:scale-[1.05] active:scale-[0.95] transition-all shadow-[0_15px_30px_-5px_rgba(236,72,153,0.4)] uppercase tracking-widest overflow-hidden flex items-center justify-center gap-2 cursor-pointer"
+      >
+        <span class="relative">Entre no Site 🚀</span>
+      </button>
+
+      <!-- Security Badge -->
+      <div class="mt-8 flex items-center justify-center gap-2">
+        <div class="flex -space-x-2">
+          <div class="w-5 h-5 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[8px]">✨</div>
+          <div class="w-5 h-5 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[8px]">✨</div>
+          <div class="w-5 h-5 rounded-full border-2 border-slate-900 bg-slate-800 flex items-center justify-center text-[8px]">✨</div>
+        </div>
+        <span class="text-[10px] text-slate-400 font-black uppercase tracking-widest">Qualidade Premium</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script>
+  function setupSplash() {
+    const overlay = document.getElementById('splash-modal-overlay');
+    const card = document.getElementById('splash-modal-card');
+    const enterBtn = document.getElementById('splash-enter-btn');
+
+    if (!overlay || !card || !enterBtn) return;
+
+    // Check if user already saw the splash in this session
+    if (sessionStorage.getItem('assistatv_splash_seen') === 'true') {
+      overlay.style.display = 'none';
+      return;
+    }
+
+    // Freeze body scroll while splash is active
+    document.body.style.overflow = 'hidden';
+
+    enterBtn.addEventListener('click', () => {
+      card.classList.add('scale-110', 'opacity-0', 'blur-xl');
+      overlay.classList.add('opacity-0');
+      sessionStorage.setItem('assistatv_splash_seen', 'true');
+      setTimeout(() => {
+        overlay.style.display = 'none';
+        document.body.style.overflow = 'unset';
+      }, 500);
+    });
+  }
+
+  if (document.readyState === 'loading') {
+    document.addEventListener('DOMContentLoaded', setupSplash);
+  } else {
+    setupSplash();
+  }
+</script>
